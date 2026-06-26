@@ -1,4 +1,4 @@
-import { inngest } from "./client";
+import { inngest } from "@/lib/inngest/client";
 
 // 1. Process Recurring Transaction
 export const processRecurringTransaction = inngest.createFunction(
