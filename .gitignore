@@ -1,4 +1,5 @@
 node_modules/
+
 .env
 .env.local
 .env.development
@@ -7,5 +8,8 @@ node_modules/
 .next/
 dist/
 build/
+.vercel/
 
 npm-debug.log*
+
+env.zip
