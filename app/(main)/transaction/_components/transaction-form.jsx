@@ -130,12 +130,13 @@ export function AddTransactionForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* Receipt Scanner - Only show in create mode */}
       {!editMode && <ReceiptScanner onScanComplete={handleScanComplete} />}
 
       {/* Type */}
       <div className="space-y-2">
-        <label className="text-sm font-medium">Type</label>
+        <label className="text-sm font-medium">
+          Type <span className="text-red-500">*</span>
+        </label>
         <Select
           onValueChange={(value) => setValue("type", value)}
           defaultValue={type}
@@ -156,7 +157,9 @@ export function AddTransactionForm({
       {/* Amount and Account */}
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
-          <label className="text-sm font-medium">Amount</label>
+          <label className="text-sm font-medium">
+            Amount <span className="text-red-500">*</span>
+          </label>
           <Input
             type="number"
             step="0.01"
@@ -169,7 +172,9 @@ export function AddTransactionForm({
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-medium">Account</label>
+          <label className="text-sm font-medium">
+            Account <span className="text-red-500">*</span>
+          </label>
           <Select
             onValueChange={(value) => setValue("accountId", value)}
             defaultValue={getValues("accountId")}
@@ -180,7 +185,7 @@ export function AddTransactionForm({
             <SelectContent>
               {accounts.map((account) => (
                 <SelectItem key={account.id} value={account.id}>
-                  {account.name} (${parseFloat(account.balance).toFixed(2)})
+                  {account.name} (₹{parseFloat(account.balance).toFixed(2)})
                 </SelectItem>
               ))}
               <CreateAccountDrawer>
@@ -201,7 +206,9 @@ export function AddTransactionForm({
 
       {/* Category */}
       <div className="space-y-2">
-        <label className="text-sm font-medium">Category</label>
+        <label className="text-sm font-medium">
+          Category <span className="text-red-500">*</span>
+        </label>
         <Select
           onValueChange={(value) => setValue("category", value)}
           defaultValue={getValues("category")}
@@ -224,7 +231,9 @@ export function AddTransactionForm({
 
       {/* Date */}
       <div className="space-y-2">
-        <label className="text-sm font-medium">Date</label>
+        <label className="text-sm font-medium">
+          Date <span className="text-red-500">*</span>
+        </label>
         <Popover>
           <PopoverTrigger asChild>
             <Button

@@ -88,24 +88,25 @@ export const howItWorksData = [
 // Testimonials Data
 export const testimonialsData = [
   {
-    name: "Sarah Johnson",
-    role: "Small Business Owner",
-    image: "https://randomuser.me/api/portraits/women/75.jpg",
+    name: "shivtej  ",
+    role: "Sales force, pune",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
     quote:
-      "Welth has transformed how I manage my business finances. The AI insights have helped me identify cost-saving opportunities I never knew existed.",
+      "Smart Finance has completely simplified financial tracking for my clients. The detailed analytics and monthly breakdown reports make decision-making much more accurate and efficient.",
   },
   {
-    name: "Michael Chen",
-    role: "Freelancer",
-    image: "https://randomuser.me/api/portraits/men/75.jpg",
+    name: "sakshi ",
+    role: "Founder of 18pixel, Pune",
+    image: "https://randomuser.me/api/portraits/men/45.jpg",
     quote:
-      "The receipt scanning feature saves me hours each month. Now I can focus on my work instead of manual data entry and expense tracking.",
+      "Managing daily expenses and income is now effortless. The dashboard gives me a clear overview of my business performance every month. It saves both time and effort.",
   },
   {
-    name: "Emily Rodriguez",
-    role: "Financial Advisor",
-    image: "https://randomuser.me/api/portraits/women/74.jpg",
+    name: "Rusikesh ",
+    role: "BDA intern, Baramati",
+    image: "https://randomuser.me/api/portraits/men/64.jpg",
     quote:
-      "I recommend Welth to all my clients. The multi-currency support and detailed analytics make it perfect for international investors.",
+      "I appreciate the simplicity and professional design of Smart Finance. The expense categorization and insights help maintain better financial discipline and planning.",
   },
 ];
+

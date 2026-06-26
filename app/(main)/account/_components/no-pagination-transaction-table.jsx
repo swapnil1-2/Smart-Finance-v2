@@ -71,11 +71,9 @@ export function NoPaginationTransactionTable({ transactions }) {
   const [recurringFilter, setRecurringFilter] = useState("");
   const router = useRouter();
 
-  // Memoized filtered and sorted transactions
   const filteredAndSortedTransactions = useMemo(() => {
     let result = [...transactions];
 
-    // Apply search filter
     if (searchTerm) {
       const searchLower = searchTerm.toLowerCase();
       result = result.filter((transaction) =>
@@ -83,12 +81,10 @@ export function NoPaginationTransactionTable({ transactions }) {
       );
     }
 
-    // Apply type filter
     if (typeFilter) {
       result = result.filter((transaction) => transaction.type === typeFilter);
     }
 
-    // Apply recurring filter
     if (recurringFilter) {
       result = result.filter((transaction) => {
         if (recurringFilter === "recurring") return transaction.isRecurring;
@@ -96,10 +92,8 @@ export function NoPaginationTransactionTable({ transactions }) {
       });
     }
 
-    // Apply sorting
     result.sort((a, b) => {
       let comparison = 0;
-
       switch (sortConfig.field) {
         case "date":
           comparison = new Date(a.date) - new Date(b.date);
@@ -113,7 +107,6 @@ export function NoPaginationTransactionTable({ transactions }) {
         default:
           comparison = 0;
       }
-
       return sortConfig.direction === "asc" ? comparison : -comparison;
     });
 
@@ -144,11 +137,8 @@ export function NoPaginationTransactionTable({ transactions }) {
     );
   };
 
-  const {
-    loading: deleteLoading,
-    fn: deleteFn,
-    data: deleted,
-  } = useFetch(bulkDeleteTransactions);
+  const { loading: deleteLoading, fn: deleteFn, data: deleted } =
+    useFetch(bulkDeleteTransactions);
 
   const handleBulkDelete = async () => {
     if (
@@ -216,7 +206,6 @@ export function NoPaginationTransactionTable({ transactions }) {
             </SelectContent>
           </Select>
 
-          {/* Bulk Actions */}
           {selectedIds.length > 0 && (
             <div className="flex items-center gap-2">
               <Button
@@ -251,8 +240,7 @@ export function NoPaginationTransactionTable({ transactions }) {
               <TableHead className="w-[50px]">
                 <Checkbox
                   checked={
-                    selectedIds.length ===
-                      filteredAndSortedTransactions.length &&
+                    selectedIds.length === filteredAndSortedTransactions.length &&
                     filteredAndSortedTransactions.length > 0
                   }
                   onCheckedChange={handleSelectAll}
@@ -346,7 +334,7 @@ export function NoPaginationTransactionTable({ transactions }) {
                         : "text-green-500"
                     )}
                   >
-                    {transaction.type === "EXPENSE" ? "-" : "+"}$
+                    {transaction.type === "EXPENSE" ? "-" : "+"}₹
                     {transaction.amount.toFixed(2)}
                   </TableCell>
                   <TableCell>
@@ -359,11 +347,7 @@ export function NoPaginationTransactionTable({ transactions }) {
                               className="gap-1 bg-purple-100 text-purple-700 hover:bg-purple-200"
                             >
                               <RefreshCw className="h-3 w-3" />
-                              {
-                                RECURRING_INTERVALS[
-                                  transaction.recurringInterval
-                                ]
-                              }
+                              {RECURRING_INTERVALS[transaction.recurringInterval]}
                             </Badge>
                           </TooltipTrigger>
                           <TooltipContent>

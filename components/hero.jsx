@@ -1,60 +1,69 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const HeroSection = () => {
-  const imageRef = useRef(null);
-
-  useEffect(() => {
-    const imageElement = imageRef.current;
-
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const scrollThreshold = 100;
-
-      if (scrollPosition > scrollThreshold) {
-        imageElement.classList.add("scrolled");
-      } else {
-        imageElement.classList.remove("scrolled");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <section className="pt-40 pb-20 px-4">
+    <section className="pt-40 pb-24 px-4 bg-gray-50">
       <div className="container mx-auto text-center">
-        <h1 className="text-5xl md:text-8xl lg:text-[105px] pb-6 gradient-title">
+
+        {/* Gradient Heading */}
+        <h1
+          className="text-4xl sm:text-6xl md:text-8xl lg:text-[100px]
+                     font-extrabold tracking-tight leading-[1.05] pb-6"
+          style={{
+            background:
+              "linear-gradient(90deg, #1e8a61 0%, #4338ca 50%, #02220d 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
           Manage Your Finances <br /> with Intelligence
         </h1>
-        <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+
+        <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
           An AI-powered financial management platform that helps you track,
           analyze, and optimize your spending with real-time insights.
         </p>
-        <div className="flex justify-center space-x-4">
+
+        <div className="flex justify-center">
           <Link href="/dashboard">
-            <Button size="lg" className="px-8">
-              Get Started
-            </Button>
+            <Button
+  size="lg"
+  className="px-10 py-6 
+             bg-black text-white font-semibold
+             rounded-xl shadow-md
+             transition-all duration-300
+             hover:bg-gradient-to-r 
+             hover:from-[#1e8a61] 
+             hover:via-[#4338ca] 
+             hover:to-[#02220d]
+             hover:text-white
+             hover:shadow-lg"
+>
+  Get Started
+</Button>
+
           </Link>
         </div>
-        <div className="hero-image-wrapper mt-5 md:mt-0">
-          <div ref={imageRef} className="hero-image">
+
+        {/* Image Card */}
+        <div className="mt-20 px-4">
+          <div className="rounded-2xl shadow-2xl p-4 bg-white">
             <Image
               src="/banner.jpeg"
               width={1280}
               height={720}
               alt="Dashboard Preview"
-              className="rounded-lg shadow-2xl border mx-auto"
+              className="rounded-xl mx-auto"
               priority
             />
           </div>
         </div>
+
       </div>
     </section>
   );
